@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Cards</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="primary">
+
+  <div class="bg_circle"></div>
+
+  <ion-row>
+    <swiper [config]="bannerConfig">
+      <ng-template swiperSlide *ngFor="let card of cards">
+        <div class="card_details">
+          <img [src]="card?.company_img" />
+          <div align="center">
+            <ion-label>
+              <div class="acc-amt"><ion-text color="white">{{card?.card_no}}</ion-text></div>
+              <span>{{card?.card_holder}}</span>
+            </ion-label>    
+          </div>
+          <p class="exp ion-text-start"><ion-text color="white">{{card?.exp_date}}</ion-text></p>
+        </div>
+      </ng-template>
+    </swiper>
+  </ion-row>
+
+  <ion-list class="transactions">
+    <ion-list-header>
+      <ion-label color="medium">Settings</ion-label>
+    </ion-list-header>
+    <ion-item-group>
+      <ion-item lines="full">
+        <ion-label>
+          Enable Card 
+        </ion-label>
+        <ion-toggle slot="end" [checked]="true"></ion-toggle>
+      </ion-item>
+    </ion-item-group>
+    <ion-item-group>
+      <ion-item lines="full" detail>
+        <ion-label>
+          Change Pin 
+        </ion-label>
+      </ion-item>
+    </ion-item-group>
+    
+  </ion-list>
+
+</ion-content>

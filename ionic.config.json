@@ -1,0 +1,7 @@
+{
+  "name": "finance-app-ui",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

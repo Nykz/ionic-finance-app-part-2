@@ -1,0 +1,40 @@
+<ion-header class="ion-no-border" translucent>
+  <ion-toolbar>
+    <ion-title color="primary" mode="ios">Transactions</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-segment mode="ios" [value]="segmentValue" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="in">
+        <ion-label>In-flow</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="out">
+        <ion-label>Out-flow</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary" fullscreen>
+
+  <ion-list class="transactions" *ngIf="transactions?.length > 0">
+    <ion-item-group>
+      <ion-item lines="full" *ngFor="let transaction of transactions">
+        <ion-thumbnail slot="start" class="ion-text-center">
+          <img [src]="'assets/imgs/' + (transaction?.amount >= 0 ? 'up-right.png' : 'down-left-arrow.png')" />
+        </ion-thumbnail>
+        <ion-label>
+          <ion-text color="primary">{{transaction?.to}}</ion-text>
+          <p>
+            <ion-text>
+              {{transaction?.date | date: 'MMM d, y'}}
+            </ion-text>
+          </p>
+        </ion-label>
+        <ion-text slot="end" color="primary">
+          {{transaction?.amount >= 0 ? '₹' + transaction?.amount : '-₹' + (transaction?.amount * (-1))}}
+        </ion-text>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+
+</ion-content>
